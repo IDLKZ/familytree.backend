@@ -26,10 +26,11 @@ class Family extends Model
        $tree = [];
        foreach ($raw as $id=>&$node){
            if(!$node["parent_id"]){
-               $tree[$id] = &$node;
+               $tree = &$node;
+//               $tree[$id] = &$node;
            }
            else{
-               $raw[$node["parent_id"]]["children"][$id] = &$node;
+               $raw[$node["parent_id"]]["children"][] = &$node;
            }
        }
        return $tree;

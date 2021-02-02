@@ -29,6 +29,9 @@ Route::group([
     Route::post('add-man', [UserController::class, 'add']);
     Route::get('get-men', [UserController::class, 'get']);
     Route::get("tree-family",[UserController::class,"treeFamily"]);
+    //
+    Route::post("data",[UserController::class,"test"]);
+    Route::get("show-data",[UserController::class,"showData"]);
 });
 
 //Route::post('register', function(Request $request) {
