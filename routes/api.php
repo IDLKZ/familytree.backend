@@ -25,6 +25,7 @@ Route::group([
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'user']);
+    Route::get("member",[UserController::class,"member"]);
 
     Route::post('add-man', [UserController::class, 'add']);
     Route::get('get-men', [UserController::class, 'get']);

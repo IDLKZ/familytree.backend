@@ -39,6 +39,8 @@ class UserController extends Controller
     public function showData(){
         $test = json_decode((Test::find(1))->data,1);
         dd($test);
-
+    }
+    public function member(){
+        return response()->json(Family::get()->random(6));
     }
 }
