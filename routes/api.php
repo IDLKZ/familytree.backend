@@ -43,16 +43,11 @@ Route::group([
     Route::post("news-create",[NewsController::class,"create"]);
     Route::post("news-update/",[NewsController::class,"update"]);
     Route::delete("news-delete/{id}",[NewsController::class,"delete"]);
+    Route::get("/news-show/{id}",[NewsController::class,"show"]);
 
 
 
 
 });
 
-//Route::post('register', function(Request $request) {
-//        \App\Models\User::create([
-//           'name' => 'admin',
-//           'email' => 'admin@gmail.com',
-//           'password' => bcrypt($request['password'])
-//        ]);
-//    });
+Route::get("/data",[\App\Http\Controllers\Api\FrontendController::class,"data"]);

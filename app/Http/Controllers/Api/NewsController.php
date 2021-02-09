@@ -44,4 +44,8 @@ class NewsController extends Controller
         }
 
     }
+
+    public function show($id){
+        return response()->json(News::find($id));
+    }
 }
