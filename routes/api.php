@@ -31,6 +31,7 @@ Route::group([
     Route::post('add-man', [UserController::class, 'add']);
     Route::get('get-men', [UserController::class, 'get']);
     Route::get("tree-family",[UserController::class,"treeFamily"]);
+    Route::get("tree-family2",[UserController::class,"treeFamily2"]);
 
 //Galleries
     Route::get("gallery",[GalleryController::class,"index"]);

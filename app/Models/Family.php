@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Collection;
 
 class Family extends Model
 {
@@ -35,6 +36,16 @@ class Family extends Model
        }
        return $tree;
 
+    }
+
+    public static function treeFamily()
+    {
+        $data = Family::all();
+        $nodes = [];
+        foreach ($data as $datum) {
+            $nodes[] = collect(['id' => $datum->id, 'pid' => $datum->parent_id, 'name' => $datum->name, 'title' => $datum->description, 'img' => "http://familytree/".$datum->img]);
+        }
+        return $nodes;
     }
 
 

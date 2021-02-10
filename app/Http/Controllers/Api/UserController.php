@@ -27,7 +27,14 @@ class UserController extends Controller
     }
 
     public function treeFamily(){
+//        $tree = Family::familyTree();
+        $tree = Family::treeFamily();
+        return response()->json($tree);
+    }
+
+    public function treeFamily2(){
         $tree = Family::familyTree();
+//        $tree = Family::treeFamily();
         return response()->json($tree);
     }
 
