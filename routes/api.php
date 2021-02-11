@@ -21,34 +21,36 @@ use App\Http\Controllers\Api\NewsController;
 //    return $request->user();
 //});
 Route::group([
-    'middleware' => 'api',
+    'middleware' => ['api', 'auth:api'],
 ], function ($router) {
-    Route::post('login', [AuthController::class, 'login']);
+
     Route::post('logout', [AuthController::class, 'logout']);
-    Route::get('user', [AuthController::class, 'user']);
-    Route::get("member",[UserController::class,"member"]);
+
 
     Route::post('add-man', [UserController::class, 'add']);
     Route::get('get-men', [UserController::class, 'get']);
-    Route::get("tree-family",[UserController::class,"treeFamily"]);
+
     Route::get("tree-family2",[UserController::class,"treeFamily2"]);
 
 //Galleries
-    Route::get("gallery",[GalleryController::class,"index"]);
+
     Route::post("gallery-create",[GalleryController::class,"create"]);
     Route::post("gallery-update/",[GalleryController::class,"update"]);
     Route::delete("gallery-delete/{id}",[GalleryController::class,"delete"]);
     //News
     //Galleries
-    Route::get("news",[NewsController::class,"index"]);
+
     Route::post("news-create",[NewsController::class,"create"]);
     Route::post("news-update/",[NewsController::class,"update"]);
     Route::delete("news-delete/{id}",[NewsController::class,"delete"]);
-    Route::get("/news-show/{id}",[NewsController::class,"show"]);
-
-
-
 
 });
 
+Route::post('login', [AuthController::class, 'login']);
+Route::get('user', [AuthController::class, 'user']);
+Route::get("gallery",[GalleryController::class,"index"]);
+Route::get("news",[NewsController::class,"index"]);
+Route::get("/news-show/{id}",[NewsController::class,"show"]);
+Route::get("tree-family",[UserController::class,"treeFamily"]);
+Route::get("member",[UserController::class,"member"]);
 Route::get("/data",[\App\Http\Controllers\Api\FrontendController::class,"data"]);
