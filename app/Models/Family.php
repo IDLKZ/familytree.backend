@@ -43,7 +43,7 @@ class Family extends Model
         $data = Family::all();
         $nodes = [];
         foreach ($data as $datum) {
-            $nodes[] = collect(['id' => $datum->id, 'pid' => $datum->parent_id, 'name' => $datum->name, 'title' => $datum->description, 'img' => "http://familytree/".$datum->img]);
+            $nodes[] = collect(['id' => $datum->id, 'pid' => $datum->parent_id, 'name' => $datum->name, 'title' => $datum->description, 'img' => "http://backend.qangli.kz/".$datum->img]);
         }
         return $nodes;
     }
