@@ -32,6 +32,7 @@ Route::group([
 
     Route::get("tree-family2",[UserController::class,"treeFamily2"]);
 
+
 //Galleries
 
     Route::post("gallery-create",[GalleryController::class,"create"]);
@@ -45,7 +46,11 @@ Route::group([
     Route::delete("news-delete/{id}",[NewsController::class,"delete"]);
 
 });
-
+Route::get('families', [UserController::class, 'family']);
+Route::get('families/{id}', [UserController::class, 'getUser']);
+Route::patch('/families/{id}', [UserController::class, 'update']);
+Route::get('findFamilies', [UserController::class, 'search']);
+Route::delete('families/{id}', [UserController::class, 'deleteFamily']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('user', [AuthController::class, 'user']);
 Route::get("gallery",[GalleryController::class,"index"]);

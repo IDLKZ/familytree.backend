@@ -17,6 +17,15 @@ class File extends Model
         return $directory . $filename;
     }
 
+    public static function updateImage($model, $file, $directory){
+        if(Storage::exists($model['img']) && $model['img'] != "/no-image.png" ){
+            Storage::delete($model['img']);
+        }
+        $filename = Str::random(12) . "." . $file->getClientOriginalExtension();
+        $file->storeAs($directory,$filename);
+        return $directory . $filename;
+    }
+
     public static function deleteImage($file){
         if(Storage::exists($file) && $file != "/no-image.png" ){
             Storage::delete($file);

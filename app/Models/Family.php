@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Collection;
+use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 class Family extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRecursiveRelationships;
     protected $table = 'families';
     protected $fillable = ['name', 'img', 'parent_id', 'description',"number"];
 
@@ -20,6 +22,16 @@ class Family extends Model
         $model->fill($input);
         $model->save();
         return $model;
+    }
+
+    public static function updateData($request, $model)
+    {
+        $input = $request->all();
+        if ($request->hasFile('img')) {
+            $input["img"] = File::updateImage($model, $request['img'],"/uploads/users/");
+        }
+        $model->update($input);
+        $model->save();
     }
 
     public static function familyTree(){
@@ -47,6 +59,7 @@ class Family extends Model
         }
         return $nodes;
     }
+
 
 
 }
