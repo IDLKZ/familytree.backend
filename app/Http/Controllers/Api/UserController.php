@@ -41,7 +41,12 @@ class UserController extends Controller
 
 
     public function member(){
-        return response()->json(Family::get()->random(6));
+        if ((Family::all())->count() > 6){
+            return response()->json(Family::get()->random(6));
+        }
+        else{
+            return response()->json(Family::get());
+        }
     }
 
     public function family()
